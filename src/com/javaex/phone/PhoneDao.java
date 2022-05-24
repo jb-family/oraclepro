@@ -66,7 +66,7 @@ public class PhoneDao {
 	
 	//메소드 - 일반
 	
-	//메소드 
+	//추가기능 메소드 
 	public int phoneInsert(PersonVo personVo) {
 		
 		int count = -1;
@@ -100,6 +100,7 @@ public class PhoneDao {
 		return count;
 	}
 	
+	//수정기능 메소드
 	public int phoneUpdate(PersonVo personVo) {
 		int count = -1;
 		
@@ -141,7 +142,7 @@ public class PhoneDao {
 		
 	}
 	
-	
+	//삭제기능 메소드	
 	public int phoneDelete(PersonVo personVo) {
 		int count = -1;
 		
@@ -171,7 +172,7 @@ public class PhoneDao {
 		return count;
 	}
 	
-	
+	//조회기능 메소드
 	public List<PersonVo> phoneSelect() {
 		List<PersonVo> personList = new ArrayList<PersonVo>();
 		try {
@@ -213,13 +214,14 @@ public class PhoneDao {
 		return personList;
 	}
 	
-	
+	//프로그램 시작 메소드
 	public void showInfo() {
 		System.out.println("*****************************************");
 		System.out.println("*	전화번호 관리 	프로그램		*");
 		System.out.println("*****************************************");
 	}
-	
+
+	//메뉴 입출력 메소드
 	public int showMenu() {
 		
 		System.out.println("");
@@ -231,7 +233,7 @@ public class PhoneDao {
 	}
 	
 	
-	
+	//리스트 추가 메소드
 	public void addList() {
 		PhoneDao phoneDao = new PhoneDao();
 		System.out.println("<2.등록>");
@@ -246,6 +248,7 @@ public class PhoneDao {
 		phoneDao.phoneInsert(addList);
 	}
 	
+	//리스트 수정 메소드
 	public void updateList() {
 		PhoneDao phoneDao = new PhoneDao();
 		System.out.println("<3.수정>");
@@ -263,6 +266,7 @@ public class PhoneDao {
 		
 	}
 	
+	//리스트 삭제 메소드
 	public void deleteList() {
 		PhoneDao phoneDao = new PhoneDao();
 		System.out.println("<4.삭제>");
