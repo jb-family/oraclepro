@@ -91,6 +91,7 @@ public class Person {
 		public void printList() {
 			printList("");
 		}
+		
 		//리스트 출력 메소드
 		public void printList(String key) {
 			personList = phoneDao.phoneSelect();
@@ -103,7 +104,7 @@ public class Person {
 					System.out.println(personId + "." + "  " + name + "  " + hp + "  " + company);
 				}
 			}
-			}
+		}
 	
 	
 }
