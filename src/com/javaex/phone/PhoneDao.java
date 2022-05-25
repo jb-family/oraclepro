@@ -17,13 +17,8 @@ public class PhoneDao {
 	private String id = "phonedb";
 	private String pw = "phonedb";
 	private Connection conn = null;
-	private PreparedStatement pstmt= null;
-	private ResultSet rs= null;
-	private Scanner sc = new Scanner(System.in);
-	private int personId = 0;
-	private String name = null;
-	private String hp = null;
-	private String company = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
 	
 	
 	
@@ -174,7 +169,7 @@ public class PhoneDao {
 	
 	//조회기능 메소드
 	public List<PersonVo> phoneSelect() {
-		List<PersonVo> personList = new ArrayList<PersonVo>();
+		List<PersonVo> pList = new ArrayList<PersonVo>();
 		try {
 			getConnection();
 			
@@ -203,7 +198,7 @@ public class PhoneDao {
 					
 					PersonVo personVo = new PersonVo(personId, name, hp, company);
 					
-					personList.add(personVo);
+					pList.add(personVo);
 			}
 			
 			} catch (SQLException e) {
@@ -211,73 +206,9 @@ public class PhoneDao {
 			} 
 		
 		close();
-		return personList;
+		return pList;
 	}
 	
-	//프로그램 시작 메소드
-	public void showInfo() {
-		System.out.println("*****************************************");
-		System.out.println("*	전화번호 관리 	프로그램		*");
-		System.out.println("*****************************************");
-	}
-
-	//메뉴 입출력 메소드
-	public int showMenu() {
-		
-		System.out.println("");
-		System.out.println("1.리스트  2.등록  3.수정  4.삭제  5.검색  6.종료");
-		System.out.println("------------------------------------------------");
-		System.out.print(">메뉴번호 :");
-		int num = sc.nextInt();
-		return num;
-	}
-	
-	
-	//리스트 추가 메소드
-	public void addList() {
-		PhoneDao phoneDao = new PhoneDao();
-		System.out.println("<2.등록>");
-		System.out.print("이름 >");
-		name = sc.next();
-		System.out.print("휴대전화 >");
-		hp = sc.next();
-		System.out.print("회사번호 >");
-		company = sc.next();
-		
-		PersonVo addList = new PersonVo(name, hp, company);
-		phoneDao.phoneInsert(addList);
-	}
-	
-	//리스트 수정 메소드
-	public void updateList() {
-		PhoneDao phoneDao = new PhoneDao();
-		System.out.println("<3.수정>");
-		System.out.print("번호 >");
-		personId = sc.nextInt();
-		System.out.print("이름 >");
-		name = sc.next();
-		System.out.print("휴대전화 >");
-		hp = sc.next();
-		System.out.print("회사번호 >");
-		company = sc.next();
-		
-		PersonVo updateList = new PersonVo(name, hp, company, personId);
-		phoneDao.phoneUpdate(updateList);
-		
-	}
-	
-	//리스트 삭제 메소드
-	public void deleteList() {
-		PhoneDao phoneDao = new PhoneDao();
-		System.out.println("<4.삭제>");
-		System.out.print(">번호 :");
-		personId = sc.nextInt();
-		
-		PersonVo deleteList = new PersonVo(personId);
-		phoneDao.phoneDelete(deleteList);
-	}
-	
-
 	
 	
 }

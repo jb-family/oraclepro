@@ -7,12 +7,8 @@ public class PhoneApp {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		PhoneDao phoneDao = new PhoneDao();
 		boolean run = true;
-		String name = null;
-		String hp = null;
-		String company = null;
-		
+		Person person = new Person();
 		
 		/*
 		PersonVo pVo1 = new PersonVo("이효리","010-1111-1111","02-1111-1111");
@@ -39,41 +35,22 @@ public class PhoneApp {
 		
 		
 		
-		phoneDao.showInfo();//프로그램 시작
+		person.showInfo();//프로그램 시작
 		
 		while(run) {
-			int num = phoneDao.showMenu();//매뉴정보 출력 
-			List<PersonVo>pList = phoneDao.phoneSelect();
-			
+			int num = person.showMenu();//매뉴정보 출력 
+						
 			
 			if(num == 1) {//리스트 불러오기
-				System.out.println("<1.리스트>");
-				for(int i = 0; i < pList.size(); i++) {
-					int personId = pList.get(i).getPersonId();
-					name = pList.get(i).getName();
-					hp = pList.get(i).getHp();
-					company = pList.get(i).getCompany();
-					System.out.println(personId + "." + "  " + name + "  " + hp + "  " + company);
-				}
+				person.printList();
 			}else if(num == 2) {//리스트 추가
-				phoneDao.addList();
+				person.addList();
 			}else if(num == 3) {//리스트 수정
-				phoneDao.updateList();
+				person.updateList();
 			}else if(num == 4) {//리스트 삭제
-				phoneDao.deleteList();
+				person.deleteList();
 			}else if(num == 5) {//리스트 검색
-				System.out.println("<5.검색>");
-				System.out.print("검색어 >");
-				String search = sc.next();
-				for(int i = 0; i < pList.size(); i++) {
-					int personId = pList.get(i).getPersonId();
-					name = pList.get(i).getName();
-					hp = pList.get(i).getHp();
-					company = pList.get(i).getCompany();
-					if(name.contains(search) || hp.contains(search) || company.contains(search)) {
-						System.out.println(personId + "." + "  " + name + "  " + hp + "  " + company);
-					}
-				}
+				person.searchList();
 			}else if(num == 6) {//프로그램 종료
 				System.out.println("종료되었습니다.");	
 				run = false;
